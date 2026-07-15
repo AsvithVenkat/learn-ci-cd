@@ -28,8 +28,7 @@ jobs:
 
       - name: Build Project
         run: npm run build
-    
-    test:
+  test:
     name: Run Unit Tests
 
     needs: build
