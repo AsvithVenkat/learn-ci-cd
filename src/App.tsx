@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css';
 import useDebounce from './hooks/debounce';
 import { useGetUserQuery } from './redux/api/userApi';
+import { BrowserRouter, Routes, Route } from "react-router";
+const Dashboard = React.lazy(()=>import('./components/dashboard'))
+const Profile = React.lazy(()=>import('./components/profile'))
 
 function App() {
   const [count, setCount] = useState('')
@@ -22,6 +25,12 @@ function App() {
   }, [searchVal]);
   return (
     <>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/dashboard' element={<Dashboard />}/>
+      <Route path='/profile' element={<Profile />}/>
+    </Routes>
+    </BrowserRouter>
       <section id="center">
         <div className="hero">
           <input onChange={handleChange} />
